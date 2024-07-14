@@ -11,4 +11,5 @@ export class CommunityRepositoryImpl implements CommunityRepository {
             });
             return new Community(communityModel.code.toString(), communityModel.name, communityModel.id);
         }
+        
 }
