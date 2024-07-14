@@ -9,8 +9,8 @@ const communityRoutes_1 = require("./communiy/infraestructure/routes/communityRo
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use('/api/v1/community', communityRoutes_1.communityRoutes);
-const port = process.env.PORT || 3007;
+app.use('/community', communityRoutes_1.communityRoutes);
+const port = process.env.PORT || 3004;
 app.listen(port, () => {
     console.log(`Corriendo en el puerto ${port}`);
 });

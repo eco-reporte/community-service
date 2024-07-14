@@ -8,10 +8,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/api/v1/community', communityRoutes);
+app.use('/community', communityRoutes);
 
 
-const port = process.env.PORT || 3007;
+const port = process.env.PORT || 3004;
 app.listen(port, () => {
   console.log(`Corriendo en el puerto ${port}`);
 });

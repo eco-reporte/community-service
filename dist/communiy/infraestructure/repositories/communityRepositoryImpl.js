@@ -15,8 +15,23 @@ const sequelize_1 = require("../services/sequelize");
 class CommunityRepositoryImpl {
     create(community) {
         return __awaiter(this, void 0, void 0, function* () {
-            const communityModel = yield sequelize_1.CommunityModel.create(Object.assign(Object.assign({}, community), { code: community.code.toString() }));
-            return new community_1.Community(communityModel.code.toString(), communityModel.name, communityModel.id);
+            try {
+                // Verifica si ya existe un registro con el mismo código
+                const existingCommunity = yield sequelize_1.CommunityModel.findOne({ where: { code: community.code.toString() } });
+                if (existingCommunity) {
+                    // Si ya existe, puedes decidir qué hacer, aquí devolvemos null para indicar que no se creó nada nuevo
+                    return null;
+                }
+                // Si no existe, procede con la creación del nuevo registro
+                const communityModel = yield sequelize_1.CommunityModel.create(Object.assign(Object.assign({}, community), { code: community.code.toString() }));
+                // Retorna una nueva instancia de la clase Community con los datos guardados en la base de datos
+                return new community_1.Community(communityModel.code.toString(), communityModel.name, communityModel.id);
+            }
+            catch (error) {
+                // Maneja cualquier error que pueda ocurrir durante la creación
+                console.error('Error al crear comunidad:', error);
+                throw error; // Puedes manejar el error según tus necesidades específicas
+            }
         });
     }
     getByCode(code) {
