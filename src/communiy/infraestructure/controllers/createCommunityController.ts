@@ -3,7 +3,6 @@ import { CreateCommunityUseCase } from "../../application/createCommunityUseCase
 
 
 export class CreateCommunityController {
-    run: any;
     constructor(private useCase: CreateCommunityUseCase) {}
 
     async createCommunity(request: Request, response: Response): Promise<void> {

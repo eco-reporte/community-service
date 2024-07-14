@@ -3,19 +3,18 @@ import syncDatabase from './model';
 import { sequelize } from "../../../database/database";
 
 export class CommunityModel extends Model {
-    public code!: number;
+    public code!: string;
     public name!: string;
     public id!: number;
 }
 
 CommunityModel.init({
     code: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.STRING(128),
         primaryKey: true
     },
     name: {
-        type: new DataTypes.STRING(128),
+        type: DataTypes.STRING(128),
         allowNull: false
     },
     id: {
