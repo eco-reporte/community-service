@@ -10,3 +10,6 @@ exports.communityRoutes = express_1.default.Router();
 exports.communityRoutes.post('/create', (request, response) => {
     dependencies_1.createCommunityController.createCommunity(request, response);
 });
+exports.communityRoutes.get('/getByCode/:code', (request, response) => {
+    dependencies_1.getByCodeCommunityController.getByCodeCommunity(request, response);
+});

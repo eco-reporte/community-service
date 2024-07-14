@@ -19,5 +19,21 @@ class CommunityRepositoryImpl {
             return new community_1.Community(communityModel.code.toString(), communityModel.name, communityModel.id);
         });
     }
+    getByCode(code) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const communityModel = yield sequelize_1.CommunityModel.findOne({
+                where: {
+                    code: code
+                }
+            });
+            if (communityModel) {
+                return new community_1.Community(communityModel.code.toString(), communityModel.name, communityModel.id);
+            }
+            else {
+                // Instead of throwing an error, return null to indicate not found
+                return null;
+            }
+        });
+    }
 }
 exports.CommunityRepositoryImpl = CommunityRepositoryImpl;

@@ -1,9 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCommunityController = exports.createCommunityUseCase = exports.communityRepositoryImpl = void 0;
+exports.getByCodeCommunityController = exports.getByCodeCommunityUseCase = exports.createCommunityController = exports.createCommunityUseCase = exports.communityRepositoryImpl = void 0;
 const communityRepositoryImpl_1 = require("./repositories/communityRepositoryImpl");
 const createCommunityUseCase_1 = require("../application/createCommunityUseCase");
 const createCommunityController_1 = require("./controllers/createCommunityController");
+const getByCodeCommunityUseCase_1 = require("../application/getByCodeCommunityUseCase");
+const getByCodeCommunityController_1 = require("./controllers/getByCodeCommunityController");
 exports.communityRepositoryImpl = new communityRepositoryImpl_1.CommunityRepositoryImpl();
 exports.createCommunityUseCase = new createCommunityUseCase_1.CreateCommunityUseCase(exports.communityRepositoryImpl);
 exports.createCommunityController = new createCommunityController_1.CreateCommunityController(exports.createCommunityUseCase);
+exports.getByCodeCommunityUseCase = new getByCodeCommunityUseCase_1.GetByCodeCommunityUseCase(exports.communityRepositoryImpl);
+exports.getByCodeCommunityController = new getByCodeCommunityController_1.GetByCodeCommunityController(exports.getByCodeCommunityUseCase);
